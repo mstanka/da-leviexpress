@@ -1,13 +1,14 @@
 import React, { Fragment, useState } from 'react';
+import JourneyDetail from '../../components/JourneyDetail';
 import JourneyPicker from '../../components/JourneyPicker';
 
 const Home = () => {
   const [journey, setJourney] = useState(null);
-
+  console.log(journey);
   return (
     <Fragment>
       <JourneyPicker onJourneyChange={setJourney} />
-      {journey && <p>Nalezeno spojení s id ${journey.journeyId}</p>}
+      {journey && <JourneyDetail journey={journey} />}
     </Fragment>
   );
 };
