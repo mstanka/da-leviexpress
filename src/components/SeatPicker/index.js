@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Seat from '../Seat';
 
 const SeatPicker = (seats, journeyId) => {
@@ -6,6 +7,22 @@ const SeatPicker = (seats, journeyId) => {
 
   const handleSeatSelect = (number) => {
     setSelectedSeatNumber(number);
+  };
+  let history = useHistory();
+
+  const handleBuy = () => {
+    console.log('Funguju');
+    fetch(
+      `https://leviexpress-backend.herokuapp.com/api/reserve?seat=${selectedSeatNumber}&journeyId=${journeyId}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    )
+      .then((resp) => resp.json())
+      .then((json) => history.push(`/reservation/${json.data.reservationId}`));
   };
 
   return (
@@ -68,7 +85,12 @@ const SeatPicker = (seats, journeyId) => {
           ))}
         </div>
       </div>
-      <button className="btn" type="button">
+      <button
+        className="btn"
+        type="button"
+        onClick={handleBuy}
+        disabled={selectedSeatNumber === null ? true : false}
+      >
         Rezervovat
       </button>
     </div>
