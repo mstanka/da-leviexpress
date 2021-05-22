@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { Fragment, useState } from 'react';
 import JourneyPicker from '../../components/JourneyPicker';
 
 const Home = () => {
-  return <JourneyPicker />;
+  const [journey, setJourney] = useState(null);
+
+  return (
+    <Fragment>
+      <JourneyPicker onJourneyChange={setJourney} />
+      {journey && <p>Nalezeno spojení s id ${journey.journeyId}</p>}
+    </Fragment>
+  );
 };
 
 export default Home;
