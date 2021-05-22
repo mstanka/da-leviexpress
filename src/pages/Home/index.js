@@ -5,8 +5,7 @@ import SeatPicker from '../../components/SeatPicker';
 
 const Home = () => {
   const [journey, setJourney] = useState(null);
-  console.log(journey);
-  
+
   return (
     <Fragment>
       <JourneyPicker onJourneyChange={setJourney} />
