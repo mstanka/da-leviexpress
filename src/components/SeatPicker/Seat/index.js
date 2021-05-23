@@ -4,15 +4,11 @@ import './style.css';
 const Seat = ({ number, isOccupied, isSelected, onSelect }) => {
   return (
     <button
-      className={
-        isSelected
-          ? 'seat seat--selected'
-          : isOccupied
-          ? 'seat seat--occupied'
-          : 'seat'
-      }
+      className={`seat ${isOccupied ? 'seat--occupied' : ' '} ${
+        isSelected ? 'seat--selected' : ' '
+      }`}
       type="button"
-      disabled={isOccupied ? true : false}
+      disabled={isOccupied}
       onClick={() => onSelect(number)}
     >
       <svg className="seat__in" viewBox="0 0 100 100">
