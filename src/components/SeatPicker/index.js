@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Seat from './Seat';
+import './style.css'
 
 const SeatPicker = ({ seats, journeyId }) => {
   const [selectedSeatNumber, setSelectedSeatNumber] = useState(null);

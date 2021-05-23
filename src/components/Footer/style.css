@@ -11,10 +11,3 @@ footer {
   font-weight: bold;
   font-size: 150%;
 }
-
-@media only screen and (min-width: 768px) {
-  footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
